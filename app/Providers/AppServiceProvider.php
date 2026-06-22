@@ -23,9 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (env('PASSPORT_PRIVATE_KEY') && env('PASSPORT_PUBLIC_KEY')) {
-            file_put_contents(storage_path('oauth-private.key'), env('PASSPORT_PRIVATE_KEY'));
-            file_put_contents(storage_path('oauth-public.key'), env('PASSPORT_PUBLIC_KEY'));
+        if (env('PASSPORT_PRIVATE_KEY_B64') && env('PASSPORT_PUBLIC_KEY_B64')) {
+            file_put_contents(storage_path('oauth-private.key'), base64_decode(env('PASSPORT_PRIVATE_KEY_B64')));
+            file_put_contents(storage_path('oauth-public.key'), base64_decode(env('PASSPORT_PUBLIC_KEY_B64')));
         }
     }
 }
