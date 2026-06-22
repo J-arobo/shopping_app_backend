@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://food-delivery-app-ce205.web.app'],
 
     'allowed_origins_patterns' => [],
 
