@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/jap/Downloads/shopping_app_backend-main push -u origin main --force)"
+    ]
+  }
+}
