@@ -41,10 +41,8 @@ class PaymentController extends Controller
     public function success()
     {
         $order = Order::where(['id' => session('order_id'), 'user_id' => session('customer_id')])->first();
-        if ($order && $order->callback != null) {
-            return redirect($order->callback . '&status=success');
-        }
-        return view('payment-success');
+        $callback = $order && $order->callback ? $order->callback . '&status=success' : null;
+        return view('payment-success', compact('callback'));
     }
 
     public function fail()
