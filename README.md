@@ -1,6 +1,6 @@
 #Food Delivery Backend API
 
-Laravel 8 REST API powering the [DBFood Flutter app](https://food-delivery-app-ce205.web.app). Handles user authentication, product catalogue, order management, and a hosted PayPal payment flow that redirects back to the Flutter frontend on completion.
+Laravel 8 REST API powering the [Food Flutter app](https://food-delivery-app-ce205.web.app). Handles user authentication, product catalogue, order management, and a hosted PayPal payment flow that redirects back to the Flutter frontend on completion.
 
 **Live API:** [shoppingappbackend-production-85e6.up.railway.app](https://shoppingappbackend-production-85e6.up.railway.app)
 
@@ -8,7 +8,7 @@ Laravel 8 REST API powering the [DBFood Flutter app](https://food-delivery-app-c
 
 ## Background
 
-This backend was built to support the DBFood Flutter food delivery app. It started as a standard Laravel API project and was extended with:
+This backend was built to support the Flutter food delivery app. It started as a standard Laravel API project and was extended with:
 
 - Laravel Passport token-based authentication for mobile clients
 - A hosted payment page flow compatible with Flutter web (full browser redirect, not WebView)
