@@ -11,8 +11,11 @@ class PaymentController extends Controller
     public function payment(Request $request)
     {
 
-        if ($request->has('callback')) {
-            Order::where(['id' => $request->order_id])->update(['callback' => $request['callback']]);
+        if ($request->has('callback') || $request->has('cancel_url')) {
+            Order::where(['id' => $request->order_id])->update([
+                'callback'   => $request['callback'] ?? null,
+                'cancel_url' => $request['cancel_url'] ?? null,
+            ]);
         }
         
         //session is a temporary memory for a specific user
@@ -41,15 +44,20 @@ class PaymentController extends Controller
     public function success()
     {
         $order = Order::where(['id' => session('order_id'), 'user_id' => session('customer_id')])->first();
-        $callback = $order && $order->callback ? $order->callback . '&status=success' : null;
-        return view('payment-success', compact('callback'));
+        if ($order && $order->callback) {
+            return redirect($order->callback);
+        }
+        return view('payment-success');
     }
 
     public function fail()
     {
         $order = Order::where(['id' => session('order_id'), 'user_id' => session('customer_id')])->first();
-        if ($order && $order->callback != null) {
-            return redirect($order->callback . '&status=fail');
+        if ($order && $order->cancel_url) {
+            return redirect($order->cancel_url);
+        }
+        if ($order && $order->callback) {
+            return redirect($order->callback);
         }
         return view('payment-fail');
     }

@@ -152,8 +152,8 @@ class PaypalPaymentController extends Controller
                 $order->confirmed       = now();
                 $order->save();
 
-                if ($order->callback != null) {
-                    return redirect($order->callback . '&status=success');
+                if ($order->callback) {
+                    return redirect($order->callback);
                 }
                 return \redirect()->route('payment-success');
             }
@@ -162,8 +162,11 @@ class PaypalPaymentController extends Controller
             $order->failed       = now();
             $order->save();
 
-            if ($order->callback != null) {
-                return redirect($order->callback . '&status=fail');
+            if ($order->cancel_url) {
+                return redirect($order->cancel_url);
+            }
+            if ($order->callback) {
+                return redirect($order->callback);
             }
             return \redirect()->route('payment-fail');
 
