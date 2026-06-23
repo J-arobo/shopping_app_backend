@@ -124,13 +124,10 @@ public function payWithpaypal(Request $request)
                     dd("bye");
                 }
 
-            } catch (\Exception $ex) {
-               dd($ex->getData());
-               //dd($ex->getData('payment-fail'));
-               //   Toastr::error(trans($ex->getData(),['method'=>trans('messages.paypal')]));
-
-            Toastr::error(trans('messages.your_currency_is_not_supported',['method'=>trans('messages.paypal')]));
-            return back();
+            } catch (\Throwable $ex) {
+                \Log::error('PayPal payment error: ' . $ex->getMessage() . ' in ' . $ex->getFile() . ':' . $ex->getLine());
+                Toastr::error(trans('messages.your_currency_is_not_supported',['method'=>trans('messages.paypal')]));
+                return back();
         }
 
         Session::put('error', trans('messages.config_your_account',['method'=>trans('messages.paypal')]));

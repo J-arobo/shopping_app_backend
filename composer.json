@@ -16,7 +16,7 @@
         "laravel/passport": "^10.4.2",
         "laravel/sanctum": "^2.15.1",
         "laravel/tinker": "^2.5",
-        "paypal/rest-api-sdk-php": "*",
+        "paypal/rest-api-sdk-php": "1.6.4",
         "symfony/http-kernel": "^5.4.34",
         "yoeunes/toastr": "^2.3"
     },
