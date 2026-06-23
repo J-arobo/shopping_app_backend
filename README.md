@@ -1,4 +1,4 @@
-# DBFood — Food Delivery Backend API
+#Food Delivery Backend API
 
 Laravel 8 REST API powering the [DBFood Flutter app](https://food-delivery-app-ce205.web.app). Handles user authentication, product catalogue, order management, and a hosted PayPal payment flow that redirects back to the Flutter frontend on completion.
 
